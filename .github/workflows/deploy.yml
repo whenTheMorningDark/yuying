@@ -1,0 +1,35 @@
+name: Deploy VitePress to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 你可以将这里的分支名称替换为你实际使用的分支
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14" # 你可以根据需要修改 Node.js 版本
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run docs:build
+
+      - name: Deploy to GitHub Pages
+        env:
+          TOKEN: ${{ secrets.yuyingToken }}
+        run: |
+          cd docs/.vitepress/dist
+          git init
+          git add -A
+          git commit -m 'deploy'
+          git push -f https://x-access-token:${TOKEN}@github.com/whenTheMorningDark/gh-pages.git master:gh-pages
