@@ -37,7 +37,6 @@ jobs:
         run: ls -alh docs/.vitepress/dist
 
       - name: Deploy to GitHub Pages
-        if: success()
         env:
           TOKEN: ${{ secrets.YUYINGTOKEN }}
         run: |
