@@ -24,7 +24,20 @@ jobs:
       - name: Build project
         run: npm run docs:build
 
+      - name: List root directory
+        run: ls -alh
+
+      - name: List docs directory
+        run: ls -alh docs
+
+      - name: List .vitepress directory
+        run: ls -alh docs/.vitepress
+
+      - name: List dist directory
+        run: ls -alh docs/.vitepress/dist
+
       - name: Deploy to GitHub Pages
+        if: success()
         env:
           TOKEN: ${{ secrets.YUYINGTOKEN }}
         run: |
