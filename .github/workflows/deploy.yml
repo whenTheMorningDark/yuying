@@ -24,7 +24,14 @@ jobs:
       - name: Build project
         run: npm run docs:build
 
+      - name: Debug: List files in docs/.vitepress
+        run: ls -alh docs/.vitepress
+
+      - name: Debug: List files in docs/.vitepress/dist
+        run: ls -alh docs/.vitepress/dist
+
       - name: Deploy to GitHub Pages
+        if: success()
         env:
           TOKEN: ${{ secrets.YUYINGTOKEN }}
         run: |
@@ -32,4 +39,4 @@ jobs:
           git init
           git add -A
           git commit -m 'deploy'
-          git push -f https://x-access-token:${TOKEN}@github.com/whenTheMorningDark/gh-pages.git master:gh-pages
+          git push -f https://x-access-token:${TOKEN}@github.com/whenTheMorningDark/yuying.git master:gh-pages
