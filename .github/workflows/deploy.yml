@@ -1,47 +1,49 @@
-name: Deploy VitePress to GitHub Pages
-
+name: Deploy
 on:
+  # workflow_dispatch: {}
   push:
     branches:
-      - main # 你可以将这里的分支名称替换为你实际使用的分支
-
+      - master
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      # pages: write
+      # id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
         with:
-          node-version: "14" # 你可以根据需要修改 Node.js 版本
+          fetch-depth: 0
 
-      - name: Install dependencies
-        run: npm install
+      - name: 安装pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
-      - name: Build project
-        run: npm run docs:build
+      - uses: actions/setup-node@v3
+        with:
+          cache: pnpm
 
-      - name: List root directory
-        run: ls -alh
+      - name: 安装 node 依赖
+        run: pnpm i --frozen-lockfile
 
-      - name: List docs directory
-        run: ls -alh docs
+      - name: Build
+        run: pnpm docs:build
 
-      - name: List .vitepress directory
-        run: ls -alh docs/.vitepress
-
-      - name: List dist directory
-        run: ls -alh docs/.vitepress/dist
-
-      - name: Deploy to GitHub Pages
-        env:
-          TOKEN: ${{ secrets.YUYINGTOKEN }}
-        run: |
-          cd docs/.vitepress/dist
-          git init
-          git add -A
-          git commit -m 'deploy'
-          git push -f https://x-access-token:${TOKEN}@github.com/whenTheMorningDark/gh-pages.git master:gh-pages
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.2
+        with:
+          folder: docs/.vitepress/dist # The folder the action should deploy.
+          # branch: master
+          # token: ${{ secrets.DEPLOY }}
+      # - uses: actions/configure-pages@master
+      # - uses: actions/upload-pages-artifact@v1
+      #   with:
+      #     path: .vitepress/dist
+      # - name: Deploy
+      #   id: deployment
+      #   uses: actions/deploy-pages@v1
