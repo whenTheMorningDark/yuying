@@ -2,8 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "My Awesome Project123",
+  description: "A VitePress Site A VitePress SiteA VitePress Site",
+  base:"/yuying/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
