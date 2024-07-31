@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "base on vue3 component",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "cd docs && pnpm run docs:dev",
     "docs:build": "cd docs && pnpm run docs:build",
     "docs:preview": "vitepress preview docs",
     "lint:eslint": "eslint --cache --max-warnings 0 ./components/**/*.{vue,js,jsx,ts,tsx} --fix"
