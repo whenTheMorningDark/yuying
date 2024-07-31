@@ -1,27 +1,29 @@
 import { defineConfig } from 'vitepress'
-
-// https://vitepress.dev/reference/site-config
+import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock'
+import nav from './config/nav'
+import sidebar from './config/sidebar'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 export default defineConfig({
-  title: "My Awesome Project123",
+  title: "My Awesome Projectzzzz",
   description: "A VitePress Site A VitePress SiteA VitePress Site",
   base:"/yuying/",
+  markdown: {
+    theme: { light: 'github-light', dark: 'github-dark' },
+
+    config: (md: any) => {
+      md.use(demoblockPlugin, {
+        customClass: 'demoblock-custom'
+      })
+    }
+  },
+
+  vite: {
+    plugins: [demoblockVitePlugin(), vueJsx()],
+  },
+
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
+    nav,
+    sidebar,
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
