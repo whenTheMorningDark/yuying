@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "My Awesome Project1"
+  name: "My Awesome Project1232"
   text: "A VitePress Site A VitePress SiteA VitePress SiteA VitePress Sitessss"
   tagline: My great project tagline
   actions:
@@ -15,11 +15,11 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature Aww
+    details: zzzLorem ipsum222123 dolor sit amet, consectetur adipiscing elit
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Lorem ipsum dolor sit amezzzt, consectetur adipiscing elit
 ---
 

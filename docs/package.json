@@ -1,0 +1,23 @@
+{
+  "name": "@yuying/docs",
+  "version": "1.0.0",
+  "author": "kafei",
+  "type": "module",
+  "keywords": [],
+  "license": "ISC",
+  "description": "docs for yuying-ui",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "vite": "^5.3.5",
+    "vitepress": "^1.3.1",
+    "vue": "~3.3.13"
+  },
+  "devDependencies": {
+    "vitepress-theme-demoblock": "^3.0.7",
+    "@vitejs/plugin-vue-jsx": "^3.1.0"
+  }
+}
