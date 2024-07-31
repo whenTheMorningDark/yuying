@@ -10,7 +10,7 @@
 
 ```vue
 <template>
-  <yu-button>默认按钮</yu-button>
+  <yu-button>默认按钮123</yu-button>
 </template>
 ```
 
