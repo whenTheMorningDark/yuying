@@ -1,37 +1,30 @@
 {
   "compilerOptions": {
-    "noImplicitThis": false,
     "target": "esnext",
     "module": "esnext",
+    "allowJs": false,
     "strict": true,
-    "isolatedModules": true,
     "jsx": "preserve",
-    "moduleResolution": "node",
-    "resolveJsonModule":true,
-    "experimentalDecorators": true,
+    "importHelpers": true,
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
+    "noUnusedLocals": false,
+    "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true,
-    "sourceMap": true,
+    "jsxImportSource": "vue",
+    "sourceMap": false,
     "baseUrl": ".",
-    "types": [
-      "vite/client",
-    ],
+    "types": ["node", "vite/client"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "yuying-ui": ["."]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom"]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": [
+    "components",
+    "index.ts",
+    "types.d.ts"
+  ],
+  "exclude": ["node_modules"]
 }

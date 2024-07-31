@@ -1,8 +1,11 @@
 <template>
-  <div class="a">a</div>
+  <div class="a">ffff</div>
 </template>
 <script setup lang="ts">
-const props = defineProps({
+defineOptions({
+  name: 'YuButton'
+})
+defineProps({
   type: {
     type: String,
     default: 'default'
